@@ -1,0 +1,131 @@
+<html>
+    <head>
+    <title> Sign-up </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"> </script> 
+    <style> 
+        #box1 {
+            height: auto;
+            width: 600px;
+            position: relative;
+        }
+        #box2 {
+            background-image: url("hack.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #box3 {
+            background-color: white;
+            background: rgba(255, 255, 255, 0.5);
+            width: 500px;
+            height: auto;
+            margin-top: 20% ;
+            position: relative;
+        }
+        input {
+            width: 200px;
+        }
+        td {
+            width: auto;
+        }
+        .buttons {
+            width: auto;
+            border-radius: 12px;
+            font-size: 20px;
+        } 
+        #one {
+            background-color: orange;
+        }
+        
+        #two {
+            background-color: lightgreen;
+        }
+        </style> 
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("validateControl", function($scope) {
+            $scope.userName = "";
+        });
+    </script> 
+    </head>
+
+<body ng-app = "myapp" id = "box2" ><center>
+    <div id = "box1">
+        <div id = "box3">
+            <h2> SIGN - UP </h2>
+            <form name = "myForm" ng-controller = "validateControl"><center>
+                <table>
+                    <tr>
+                        <td align="right"> <span style = "color: red;"> * </span><b>USERNAME:</b > </td>
+                        <td> <input type = "text" name = "userName" ng-model = "userName" pattern = "[a-zA-Z]{3,30}" required> </td> 
+                        <td> <span style = "color:red" ng-show = "myForm.userName.$dirty && myForm.userName.$invalid">
+                        <span ng-show = "myForm.userName.$error.required"> Username is Required </span> 
+                        <span ng-show = "myForm.userName.$error.pattern" > Atleast 3 letters Required </span> 
+                        </span> 
+                        <span ng-show = "myForm.userName.$valid" style = "color:green" > SUCCESS </span></td>
+                    </tr> 
+                    <tr>
+                        <td align = "right"> <span style ="color: red;"> * </span><b>NAME:</b > </td> 
+                        <td> <input type = "text" name = "Name" ng-model = "Name" pattern = "[a-zA-Z]{3,30}" required> </td> 
+                        <td>
+                            <span style = "color:red" ng-show = "myForm.Name.$dirty && myForm.Name.$invalid" >
+                                <span ng-show = "myForm.Name.$error.required" > Name is Required </span> 
+                                <span ng-show = "myForm.Name.$error.pattern" > Atleast 3 letters Required </span> 
+                            </span> 
+                            <span ng-show = "myForm.Name.$valid" style = "color:green"> SUCCESS </span>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td align = "right" > <span style = "color: red;" > * </span><b>MAIL ID:</b > </td> 
+                        <td> <input type = "text" name = "mailID" ng-model = "mailID" ng-pattern = "/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required > </td> 
+                        <td>
+                            <span style = "color:red" ng-show = "myForm.mailID.$dirty && myForm.mailID.$invalid">
+                                <span ng-show = "myForm.mailID.$error.required"> Mail ID is Required </span> 
+                                <span ng-show = "myForm.mailID.$error.pattern"> E - mail ID invalid </span> 
+                            </span> 
+                            <span ng-show = "myForm.mailID.$valid" style = "color:green"> SUCCESS </span>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td align = "right"> <span style = "color: red;"> * </span><b>PASSWORD:</b> </td> 
+                        <td> <input type = "password" name = "Password" ng-model = "Password" pattern = "[a-zA-Z10-9]{8,30}" required> </td> 
+                        <td>
+                            <span style = "color:red" ng-show = "myForm.Password.$dirty && myForm.Password.$invalid">
+                                <span ng-show = "myForm.Password.$error.required"> Password is Required </span> 
+                                <span ng-show = "myForm.Password.$error.pattern"> Atleast 8 letters Required </span> 
+                            </span> 
+                            <span ng-show = "myForm.Password.$valid" style = "color:green"> SUCCESS </span>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td align = "right"> <span style = "color: red;"> * </span><b>CONFIRM PASSWORD:</b> </td> 
+                        <td> <input type = "password" name = "confirmPassword" ng-model = "confirmPassword" ng-pattern = "Password" required> </td> 
+                        <td>
+                            <span style = "color:red" ng-show = "myForm.confirmPassword.$dirty && myForm.confirmPassword.$invalid">
+                                <span ng-show = "myForm.confirmPassword.$error.required"> Confirm Password is Required </span> 
+                                <span ng-show = "myForm.confirmPassword.$error.pattern"> Password does not match above </span> 
+                            </span>
+                            <span ng-show = "myForm.confirmPassword.$valid" style = "color:green"> SUCCESS </span>
+                        <td>
+                    </tr> 
+                    <tr>
+                        <td align = "right"> <span style = "color: red;"> * </span><b>ADDRESS:</b> </td> 
+                        <td> <textarea name = "taddress" ng-model = "taddress" rows = "5" cols = "25" required > </textarea> 
+                        <td>
+                            <span style = "color:red" ng-show = "myForm.taddress.$dirty && myForm.taddress.$invalid">
+                                <span ng-show = "myForm.taddress.$error.required"> Address is Required </span> 
+                            </span> 
+                            <span ng-show = "myForm.taddress.$valid" style = "color:green"> SUCCESS </span> 
+                        </td> 
+                    </tr> 
+                </table>
+                <br>
+                <br>
+                <input type = "submit" value = "Submit" class = "buttons" id="one">
+                <input type = "reset" value = "Reset" class = "buttons" id="two">
+            </center></form> 
+            <br>
+        </div> 
+    </div> </center> 
+</body>
+</html>

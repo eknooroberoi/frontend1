@@ -1,0 +1,105 @@
+<html>
+
+<head>
+    <title>login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <style>
+        #box1 {
+            height: auto;
+            width: 600px;
+            position: relative;
+        }
+        
+        #box2 {
+            background-image: url("hack.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        #box3 {
+            background-color: white;
+            background: rgba(255, 255, 255, 0.7);
+            width: 500px;
+            height: auto;
+            margin-top: 20%;
+            padding-top: 10px;
+            border-radius: 25px;
+            position: relative;
+        }
+        
+        input {
+            width: 200px;
+        }
+        
+        td {
+            width: auto;
+        }
+        
+        .buttons {
+            width: auto;
+            border-radius: 12px;
+            font-size: 20px;
+        }
+        
+        #one {
+            background-color: orange;
+        }
+        
+        #two {
+            background-color: lightgreen;
+        }
+    </style>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("validateControl", function($scope) {
+            $scope.userName = "";
+        });
+    </script>
+</head>
+
+<body ng-app="myapp" id="box2">
+    <center>
+        <div id="box1">
+            <div id="box3">
+                <h1>LOGIN</h1>
+
+                <form name="myForm" ng-controller="validateControl">
+                    <center>
+                        <table>
+                            <tr>
+                                <td align="right"><span style="color: red;">*</span><b>USERNAME:</b></td>
+                                <td><input type="text" name="userName" ng-model="userName" pattern="[a-zA-Z]{3,30}" required></td>
+                                <td><span style="color:red" ng-show="myForm.userName.$dirty && myForm.userName.$invalid"> 
+                                    <span ng-show="myForm.userName.$error.required">Username is Required</span>
+                                    <span ng-show="myForm.userName.$error.pattern">Atleast 3 letters Required</span>
+                                    </span>
+                                    <span ng-show="myForm.userName.$valid" style="color:green">SUCCESS</span></td>
+                            </tr>
+
+                            <tr>
+                                <td align="right"><span style="color: red;">*</span><b>PASSWORD:</b></td>
+                                <td><input type="text" name="Password" ng-model="Password" pattern="[a-zA-Z1-9]{8,30}" required></td>
+                                <td><span style="color:red" ng-show="myForm.Password.$dirty && myForm.Password.$invalid"> 
+                                    <span ng-show="myForm.Password.$error.required">Password is Required</span>
+                                    <span ng-show="myForm.Password.$error.pattern">Atleast 8 letters Required</span>
+                                    </span>
+                                    <span ng-show="myForm.Password.$valid" style="color:green">SUCCESS</span></td>
+                            </tr>
+
+                        </table>
+                        <br>
+                        <br>
+                        <input type="submit" value="Submit" class="buttons" id="one">
+                        <input type="reset" value="Reset" class="buttons" id="two">
+                        <br>
+                        <h3 align="right" style="padding-right: 15px;"><a href="signup.html">New User? Sign Up</a></h3>
+                    </center>
+                </form>
+                <br>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>
